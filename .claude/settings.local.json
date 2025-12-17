@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mvn clean install:*)",
+      "Bash(chmod:*)",
+      "Bash(java -version:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -1,0 +1,177 @@
+# Dubai License Theory API Tests
+# You can run these directly in IntelliJ!
+# Click the green "Run" arrow next to each request
+
+### Get all topics
+GET http://localhost:8080/api/questions/topics
+
+### Get 5 random questions in English
+GET http://localhost:8080/api/questions/random?count=5&language=en
+
+### Get 5 random questions in Arabic
+GET http://localhost:8080/api/questions/random?count=5&language=ar
+
+### Get 5 random questions in Hindi/Urdu
+GET http://localhost:8080/api/questions/random?count=5&language=hi_ur
+
+### Get questions by topic (Signs)
+GET http://localhost:8080/api/questions/topic/Signs?language=en
+
+### Get questions by difficulty (Easy)
+GET http://localhost:8080/api/questions/difficulty/Easy?language=en
+
+### Get specific question by ID
+GET http://localhost:8080/api/questions/1?language=en
+
+### Get all questions (might be large!)
+GET http://localhost:8080/api/questions?language=en
+
+###############################################
+# USER MANAGEMENT
+###############################################
+
+### Create a new user
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "username": "ahmed_dubai",
+  "email": "ahmed@example.com",
+  "fullName": "Ahmed Al Maktoum",
+  "preferredLanguage": "ar"
+}
+
+### Get user by ID (replace 1 with actual user ID)
+GET http://localhost:8080/api/users/1
+
+### Get user by username
+GET http://localhost:8080/api/users/username/ahmed_dubai
+
+### Update user
+PUT http://localhost:8080/api/users/1
+Content-Type: application/json
+
+{
+  "fullName": "Ahmed Al Maktoum Updated",
+  "preferredLanguage": "en"
+}
+
+### Update last login
+POST http://localhost:8080/api/users/1/login
+
+### Get all users
+GET http://localhost:8080/api/users
+
+###############################################
+# EXAM MANAGEMENT
+###############################################
+
+### Submit exam
+POST http://localhost:8080/api/exams/submit
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "examType": "practice",
+  "timeTakenSeconds": 1200,
+  "answers": [
+    {
+      "questionId": 1,
+      "selectedAnswer": "B"
+    },
+    {
+      "questionId": 2,
+      "selectedAnswer": "A"
+    },
+    {
+      "questionId": 3,
+      "selectedAnswer": "C"
+    },
+    {
+      "questionId": 4,
+      "selectedAnswer": "D"
+    },
+    {
+      "questionId": 5,
+      "selectedAnswer": "A"
+    }
+  ]
+}
+
+### Get user exam history
+GET http://localhost:8080/api/exams/user/1/history
+
+### Get specific exam result by ID
+GET http://localhost:8080/api/exams/result/1
+
+### Get user statistics
+GET http://localhost:8080/api/exams/user/1/stats
+
+###############################################
+# COMPLETE WORKFLOW TEST
+###############################################
+
+### Step 1: Create a test user
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "username": "test_student",
+  "email": "student@test.com",
+  "fullName": "Test Student",
+  "preferredLanguage": "ar"
+}
+
+### Step 2: Get 20 random questions for practice exam (save the question IDs!)
+GET http://localhost:8080/api/questions/random?count=20&language=ar
+
+### Step 3: Submit the practice exam (use the user ID from step 1)
+POST http://localhost:8080/api/exams/submit
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "examType": "practice",
+  "timeTakenSeconds": 1800,
+  "answers": [
+    {"questionId": 1, "selectedAnswer": "A"},
+    {"questionId": 2, "selectedAnswer": "B"},
+    {"questionId": 3, "selectedAnswer": "C"},
+    {"questionId": 4, "selectedAnswer": "D"},
+    {"questionId": 5, "selectedAnswer": "A"},
+    {"questionId": 6, "selectedAnswer": "B"},
+    {"questionId": 7, "selectedAnswer": "C"},
+    {"questionId": 8, "selectedAnswer": "A"},
+    {"questionId": 9, "selectedAnswer": "B"},
+    {"questionId": 10, "selectedAnswer": "D"},
+    {"questionId": 11, "selectedAnswer": "A"},
+    {"questionId": 12, "selectedAnswer": "C"},
+    {"questionId": 13, "selectedAnswer": "B"},
+    {"questionId": 14, "selectedAnswer": "A"},
+    {"questionId": 15, "selectedAnswer": "D"},
+    {"questionId": 16, "selectedAnswer": "C"},
+    {"questionId": 17, "selectedAnswer": "B"},
+    {"questionId": 18, "selectedAnswer": "A"},
+    {"questionId": 19, "selectedAnswer": "D"},
+    {"questionId": 20, "selectedAnswer": "C"}
+  ]
+}
+
+### Step 4: Check user statistics
+GET http://localhost:8080/api/exams/user/1/stats
+
+### Step 5: View exam history
+GET http://localhost:8080/api/exams/user/1/history
+
+###############################################
+# TESTING DIFFERENT LANGUAGES
+###############################################
+
+### English questions
+GET http://localhost:8080/api/questions/random?count=3&language=en
+
+### Arabic questions
+GET http://localhost:8080/api/questions/random?count=3&language=ar
+
+### Hindi/Urdu questions
+GET http://localhost:8080/api/questions/random?count=3&language=hi_ur
