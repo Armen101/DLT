@@ -1,5 +1,9 @@
 package com.dubai.dlt.service;
 
+import com.dubai.dlt.config.JwtUtil;
+import com.dubai.dlt.dto.LoginRequest;
+import com.dubai.dlt.dto.LoginResponse;
+import com.dubai.dlt.dto.RegisterRequest;
 import com.dubai.dlt.dto.UserDTO;
 import com.dubai.dlt.entity.User;
 import com.dubai.dlt.repository.UserRepository;
@@ -7,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -14,6 +19,9 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private JwtUtil jwtUtil;
 
     public UserDTO createUser(UserDTO userDTO) {
         if (userRepository.existsByUsername(userDTO.getUsername())) {
@@ -71,6 +79,50 @@ public class UserService {
         return userRepository.findAll().stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
+    }
+
+    public LoginResponse login(LoginRequest loginRequest) {
+        Optional<User> userOptional = userRepository.findByUsername(loginRequest.getUsername());
+
+        if (userOptional.isEmpty()) {
+            return new LoginResponse(false, "Invalid username or password");
+        }
+
+        User user = userOptional.get();
+
+        if (!user.getPassword().equals(loginRequest.getPassword())) {
+            return new LoginResponse(false, "Invalid username or password");
+        }
+
+        user.setLastLogin(LocalDateTime.now());
+        userRepository.save(user);
+
+        String token = jwtUtil.generateToken(user.getId(), user.getUsername());
+        UserDTO userDTO = convertToDTO(user);
+        return new LoginResponse(true, "Login successful", token, userDTO);
+    }
+
+    public LoginResponse register(RegisterRequest registerRequest) {
+        if (userRepository.existsByUsername(registerRequest.getUsername())) {
+            return new LoginResponse(false, "Username already exists");
+        }
+        if (userRepository.existsByEmail(registerRequest.getEmail())) {
+            return new LoginResponse(false, "Email already exists");
+        }
+
+        User user = new User();
+        user.setUsername(registerRequest.getUsername());
+        user.setEmail(registerRequest.getEmail());
+        user.setPassword(registerRequest.getPassword());
+        user.setFullName(registerRequest.getFullName());
+        user.setPreferredLanguage(registerRequest.getPreferredLanguage());
+
+        User savedUser = userRepository.save(user);
+
+        String token = jwtUtil.generateToken(savedUser.getId(), savedUser.getUsername());
+        UserDTO userDTO = convertToDTO(savedUser);
+
+        return new LoginResponse(true, "Registration successful", token, userDTO);
     }
 
     private UserDTO convertToDTO(User user) {

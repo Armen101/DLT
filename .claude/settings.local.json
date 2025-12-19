@@ -3,7 +3,8 @@
     "allow": [
       "Bash(mvn clean install:*)",
       "Bash(chmod:*)",
-      "Bash(java -version:*)"
+      "Bash(java -version:*)",
+      "Bash(./test-api.sh:*)"
     ],
     "deny": [],
     "ask": []
