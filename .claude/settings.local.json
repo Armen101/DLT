@@ -9,7 +9,9 @@
       "Bash(git commit:*)",
       "Bash(nslookup:*)",
       "Bash(curl:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(mvn clean package:*)",
+      "Bash(./mvnw clean:*)"
     ],
     "deny": [],
     "ask": []
