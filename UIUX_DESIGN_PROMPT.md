@@ -14,6 +14,9 @@ A comprehensive exam preparation platform that:
 - Tracks performance and progress
 - Provides realistic exam simulations
 - Offers detailed explanations for better learning
+- **📌 Pin difficult questions** for focused review
+- **❌ Review wrong answers** categorized by topic
+- **📊 Track improvement** with topic-level analytics
 
 ---
 
@@ -116,11 +119,18 @@ A comprehensive exam preparation platform that:
   - Average score
   - Pass rate
   - Questions practiced
+- **Quick Access Badges** (notification style):
+  - Pinned Questions (with count badge, e.g., "12")
+  - Wrong Answers (with count badge, e.g., "45")
+  - Recent Exams (with last score)
 - Main action buttons:
   - "Practice Questions"
   - "Take Mock Exam"
   - "Review Topics"
   - "My Progress"
+- **Review Section:**
+  - "Pinned Questions" (shows count)
+  - "Review Mistakes" (shows wrong answers count by topic)
 - Language switcher (top right)
 - Profile icon (top left or right)
 
@@ -140,6 +150,7 @@ A comprehensive exam preparation platform that:
 - Progress bar
 - Topic tag (e.g., "Traffic Signs")
 - Difficulty indicator
+- **Pin icon** (top-right corner) - tap to pin/unpin question for later review
 - Question text (large, clear)
 - Four option buttons (A, B, C, D)
 - "Skip" button
@@ -152,7 +163,7 @@ A comprehensive exam preparation platform that:
 - Incorrect selection shown in red
 - Detailed explanation box
 - "Next Question" button
-- "Review Later" flag option
+- **Pin icon** (remains accessible to mark important questions)
 
 ### 5. **Mock Exam Screen**
 
@@ -224,18 +235,91 @@ A comprehensive exam preparation platform that:
   - Time taken
 - "View Details" for each exam
 
-### 8. **Review/History Screen**
-- List of past exams/practice sessions
-- Filters: All, Passed, Failed, Practice, Mock
-- Each item shows:
-  - Date/time
-  - Type (practice/exam)
-  - Score
-  - Duration
-- Tap to view detailed results
-- Option to review wrong answers
+### 8. **Pinned Questions Screen**
+- Header: "Pinned Questions" with count badge (e.g., "12 questions")
+- Empty state: "No pinned questions yet" with illustration
+- List of pinned questions:
+  - Question preview (first 2 lines)
+  - Topic tag
+  - Difficulty indicator
+  - Pin icon (tap to unpin)
+  - Date pinned (optional)
+- Group by option:
+  - All pinned
+  - By topic (collapsible sections)
+  - By difficulty
+- Search/filter bar
+- Tap question to:
+  - View full question
+  - Practice this question
+  - Unpin question
+- "Practice All Pinned" button (at bottom)
+- "Clear All Pins" option (with confirmation)
 
-### 9. **Profile/Settings Screen**
+**Design Notes:**
+- Pin icon should be visually consistent (bookmark/star/pin icon)
+- Swipe left to unpin (with undo option)
+- Visual indicator if question was answered correctly/incorrectly before
+
+### 9. **Wrong Answers Screen**
+- Header: "Review Mistakes" with total count
+- **Filter Tabs:**
+  - All Wrong Answers
+  - By Recent Exam
+  - By All Time
+- **Categorized by Topics:**
+  - Collapsible topic sections
+  - Topic header shows:
+    - Topic name
+    - Number of wrong answers in this topic
+    - Accuracy rate for this topic (e.g., "45% correct")
+    - Visual indicator (red/yellow/green based on performance)
+  - Questions within each topic show:
+    - Question preview
+    - Your wrong answer (in red)
+    - Correct answer (in green)
+    - Times answered incorrectly (e.g., "Wrong 3 times")
+    - Last attempted date
+- **Question Card Design:**
+  - Question text (truncated)
+  - Your answer vs Correct answer side-by-side
+  - Topic tag and difficulty badge
+  - "Review" button
+  - Pin icon (to add to pinned questions)
+- **Empty State:**
+  - "No mistakes yet! Keep practicing!" with encouraging illustration
+- **Action Buttons:**
+  - "Practice Weak Topics" (focuses on topics with most errors)
+  - "Retry These Questions" (practice mode with wrong answers)
+  - "Clear History" (with confirmation)
+- **Statistics Card (top):**
+  - Total questions answered wrong
+  - Most difficult topic (topic with most errors)
+  - Improvement rate (if retried and improved)
+
+**Topic Performance Indicators:**
+- 🔴 Red: Less than 50% accuracy
+- 🟡 Yellow: 50-79% accuracy
+- 🟢 Green: 80%+ accuracy
+
+### 10. **Question Review Detail Screen** (from Wrong Answers/Pinned)
+- Full question text
+- All four options (A, B, C, D)
+- Highlight your wrong answer in red outline
+- Highlight correct answer in green
+- Detailed explanation
+- Topic and difficulty tags
+- History section:
+  - "Answered incorrectly X times"
+  - Dates of attempts
+- Actions:
+  - Pin/Unpin toggle
+  - "Try Again" (retest yourself)
+  - "Mark as Learned" (remove from wrong answers)
+  - Share question (optional)
+- Navigation arrows (if viewing from a list)
+
+### 11. **Profile/Settings Screen**
 - User info:
   - Profile picture (optional)
   - Full name
@@ -257,17 +341,26 @@ A comprehensive exam preparation platform that:
   - Terms of service
   - Contact support
 
-### 10. **Question Review Screen**
-- Filter by:
-  - Wrong answers
-  - Flagged/saved questions
-  - By topic
-  - By difficulty
-- Question list with:
-  - Question preview
-  - Your answer vs correct answer
-  - Topic tag
-- Tap to view full question details
+### 12. **Bottom Navigation / Main Menu**
+- Home (dashboard icon)
+- Practice (book/pencil icon)
+- Pinned (bookmark/star icon) - **with badge showing count**
+- Mistakes (warning/refresh icon) - **with badge showing count**
+- Profile (user icon)
+
+**Alternative Layout:** Drawer/Hamburger Menu with sections:
+- Practice & Study
+  - Practice Questions
+  - Take Mock Exam
+  - Review Topics
+- My Learning
+  - Pinned Questions
+  - Review Mistakes
+  - Exam History
+- Progress
+  - Statistics
+  - Achievements
+- Settings & Profile
 
 ---
 
@@ -287,8 +380,9 @@ A comprehensive exam preparation platform that:
 3. Choose number of questions
 4. Start practice
 5. Answer questions with immediate feedback
-6. Complete session → View results
-7. Return to home or review answers
+6. Pin difficult questions during practice
+7. Complete session → View results
+8. Return to home or review answers
 
 ### Flow 3: Mock Exam
 1. Home → Tap "Take Mock Exam"
@@ -306,6 +400,44 @@ A comprehensive exam preparation platform that:
 4. Review detailed breakdown
 5. Identify weak topics
 6. Practice weak topics
+
+### Flow 5: Pin & Review Questions
+1. During practice → See difficult question
+2. Tap pin icon (in top-right corner)
+3. Question saved to "Pinned Questions"
+4. Continue practice
+5. Later: Home → Tap "Pinned Questions"
+6. View all pinned questions
+7. Filter by topic or difficulty
+8. Tap "Practice All Pinned"
+9. Review and practice pinned questions
+10. Unpin questions as you master them
+
+### Flow 6: Review Wrong Answers by Topic
+1. After completing exam → Notice low score in "Traffic Signs"
+2. Home → Tap "Review Mistakes"
+3. View wrong answers categorized by topic
+4. See "Traffic Signs" section shows 8 wrong answers (45% accuracy - Red indicator)
+5. Expand "Traffic Signs" section
+6. Review each wrong question:
+   - See your wrong answer vs correct answer
+   - Read explanation
+   - Pin important ones
+7. Tap "Practice Weak Topics" button
+8. Practice mode starts with questions from topics with most errors
+9. Improve accuracy
+10. Return to "Review Mistakes" → See improved topic performance (Yellow/Green indicator)
+
+### Flow 7: Master Difficult Questions
+1. Home → "Review Mistakes" → See "Parking" topic with 12 wrong answers
+2. Tap "Parking" topic to expand
+3. Review individual wrong questions
+4. Pin 3 most difficult ones
+5. Tap "Retry These Questions"
+6. Practice just those 12 parking questions
+7. Answer correctly
+8. Mark as learned (removes from wrong answers)
+9. Check progress → "Parking" topic now shows improved accuracy
 
 ---
 
@@ -375,14 +507,18 @@ A comprehensive exam preparation platform that:
 
 1. **Dark Mode:** Complete dark theme
 2. **Offline Mode:** Download questions for offline practice
-3. **Streak Counter:** Daily practice streak
-4. **Achievements/Badges:** Gamification elements
+3. **Streak Counter:** Daily practice streak tracker
+4. **Achievements/Badges:** Gamification elements (first exam, 100 questions, etc.)
 5. **Share Results:** Social sharing of achievements
-6. **Study Reminders:** Push notifications
-7. **Bookmarks:** Save difficult questions
-8. **Notes:** Add personal notes to questions
-9. **Voice Reading:** Text-to-speech for questions
-10. **Comparison:** Compare with average user scores
+6. **Study Reminders:** Smart push notifications for practice
+7. **Notes on Questions:** Add personal notes to pinned questions
+8. **Voice Reading:** Text-to-speech for questions (accessibility)
+9. **Comparison:** Compare your score with average user scores
+10. **Smart Recommendations:** AI-suggested practice based on weak areas
+11. **Progress Widgets:** Home screen widget showing stats
+12. **Export Wrong Answers:** PDF export of wrong answers for offline study
+13. **Question Collections:** Create custom study sets from pinned questions
+14. **Spaced Repetition:** Review pinned questions at optimal intervals
 
 ---
 
@@ -444,6 +580,35 @@ The app should integrate with these backend endpoints:
 - `GET /api/users/{id}` - Get user profile
 - `PUT /api/users/{id}` - Update user profile
 
+### Pinned Questions (Client-Side Storage Recommended)
+**Note:** Pinned questions can be stored locally on device using:
+- AsyncStorage (React Native)
+- SharedPreferences (Android)
+- UserDefaults (iOS)
+- Or implement server-side with new endpoints (future enhancement)
+
+**Local Storage Structure:**
+```json
+{
+  "pinnedQuestions": [
+    {
+      "questionId": 123,
+      "pinnedAt": "2025-12-20T10:30:00Z",
+      "topic": "Signs",
+      "difficulty": "Medium"
+    }
+  ]
+}
+```
+
+### Wrong Answers Tracking (From Exam Results)
+**Source:** Extract from exam history endpoint
+- `GET /api/exams/user/{userId}/history` - Contains all past answers
+- Filter where `isCorrect: false`
+- Group by topic
+- Track retry attempts
+- Calculate topic-level accuracy
+
 **Note:** All endpoints except registration/login require JWT token in header:
 ```
 Authorization: Bearer {token}
@@ -454,9 +619,10 @@ Authorization: Bearer {token}
 ## 🎨 Deliverables Expected
 
 1. **High-Fidelity Mockups:**
-   - All 10+ key screens
+   - All 12+ key screens (including Pinned Questions, Wrong Answers, Question Review Detail)
    - Light and dark mode variants
    - English and Arabic versions (showing RTL)
+   - Empty states for all screens
 
 2. **Prototype:**
    - Interactive prototype (Figma, Adobe XD, Sketch)
