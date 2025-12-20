@@ -11,7 +11,10 @@
       "Bash(curl:*)",
       "Bash(git push:*)",
       "Bash(mvn clean package:*)",
-      "Bash(./mvnw clean:*)"
+      "Bash(./mvnw clean:*)",
+      "Bash(git remote:*)",
+      "Bash(./test-local.sh https://drivertheoryuae.com)",
+      "Bash(./test-with-auth.sh:*)"
     ],
     "deny": [],
     "ask": []
