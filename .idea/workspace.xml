@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae1bb51e-abd5-4251-98ea-b98da9adbeaf" name="Changes" comment="fixed the issue causing the 500 errors">
+    <list default="true" id="ae1bb51e-abd5-4251-98ea-b98da9adbeaf" name="Changes" comment="Automated endpoint testing">
       <change beforePath="$PROJECT_DIR$/.claude/settings.local.json" beforeDir="false" afterPath="$PROJECT_DIR$/.claude/settings.local.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
@@ -153,7 +153,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766239667368</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Automated endpoint testing">
+      <option name="closed" value="true" />
+      <created>1766240324921</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1766240324921</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,7 +170,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="deployment prerequisites" />
     <MESSAGE value="fixed the issue causing the 500 errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed the issue causing the 500 errors" />
+    <MESSAGE value="Automated endpoint testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Automated endpoint testing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

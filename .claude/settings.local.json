@@ -14,7 +14,8 @@
       "Bash(./mvnw clean:*)",
       "Bash(git remote:*)",
       "Bash(./test-local.sh https://drivertheoryuae.com)",
-      "Bash(./test-with-auth.sh:*)"
+      "Bash(./test-with-auth.sh:*)",
+      "Bash(ls:*)"
     ],
     "deny": [],
     "ask": []

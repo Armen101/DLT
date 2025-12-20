@@ -17,6 +17,8 @@ A comprehensive exam preparation platform that:
 - **📌 Pin difficult questions** for focused review
 - **❌ Review wrong answers** categorized by topic
 - **📊 Track improvement** with topic-level analytics
+- **🔓 Free trial** with 1 topic, rent to unlock all 15 topics
+- **💳 In-app rental** via Google Play for fixed period access
 
 ---
 
@@ -113,6 +115,14 @@ A comprehensive exam preparation platform that:
 
 ### 3. **Home Dashboard**
 - Welcome message with user's name
+- **Rental Status Banner** (if not rented):
+  - "🔒 1 Free Topic Available"
+  - "Unlock all 15 topics" button
+  - Tap → Navigate to Subscription screen
+- **Rental Status Banner** (if rented):
+  - "✅ Premium Active - X days remaining"
+  - Expiry date shown
+  - Optional "Extend" button
 - Quick stats cards:
   - Total exams taken
   - Average score
@@ -137,12 +147,18 @@ A comprehensive exam preparation platform that:
 
 **Practice Setup:**
 - Mode selection:
-  - Random questions
-  - By topic (dropdown/list)
+  - Random questions (Free: only Traffic Signs, Rented: all topics)
+  - By topic (dropdown/list with lock icons)
+    - Traffic Signs (unlocked - FREE)
+    - Other 14 topics (🔒 with "Unlock" label if not rented)
   - By difficulty (Easy, Medium, Hard)
 - Number of questions slider (5-50)
 - "Start Practice" button
+- **Lock State Indicators:**
+  - If topic is locked: "🔒 Unlock All Topics" button
+  - Tapping locked topic → Navigate to Subscription screen
 - **Illustration:** Friendly character studying or practicing driving
+- **Rental Status Badge** (if active): "Premium Active" or "X days left"
 
 **Question Display:**
 - Question counter (e.g., "Question 5 of 20")
@@ -196,29 +212,91 @@ A comprehensive exam preparation platform that:
 
 ### 6. **Topics Screen**
 - List/grid of all 15 topics:
-  - Traffic Signs
-  - Road Markings
-  - Right of Way
-  - Speed & Distance
-  - Parking
-  - Signals
-  - Overtaking & Lanes
-  - Motorway Rules
-  - Night Driving
-  - Adverse Weather
-  - Road Works
-  - Vulnerable Road Users
-  - Vehicle Safety
-  - Accidents
-  - Legal Requirements
-- Each topic card shows:
-  - Icon/illustration
-  - Topic name
-  - Number of questions
-  - Your accuracy % (if practiced)
-- Tap to filter practice by topic
+  - **Traffic Signs** (FREE - unlocked)
+  - Road Markings (🔒 locked)
+  - Right of Way (🔒 locked)
+  - Speed & Distance (🔒 locked)
+  - Parking (🔒 locked)
+  - Signals (🔒 locked)
+  - Overtaking & Lanes (🔒 locked)
+  - Motorway Rules (🔒 locked)
+  - Night Driving (🔒 locked)
+  - Adverse Weather (🔒 locked)
+  - Road Works (🔒 locked)
+  - Vulnerable Road Users (🔒 locked)
+  - Vehicle Safety (🔒 locked)
+  - Accidents (🔒 locked)
+  - Legal Requirements (🔒 locked)
 
-### 7. **Progress/Statistics Screen**
+**Free Topic Card (Traffic Signs):**
+- Icon/illustration
+- Topic name
+- "FREE" badge (green)
+- Number of questions
+- Your accuracy % (if practiced)
+- Tap to practice
+
+**Locked Topic Cards (14 topics):**
+- Icon/illustration (dimmed/grayed out)
+- Topic name
+- Lock icon (🔒)
+- "Unlock All Topics" label
+- Tap → Navigate to Subscription/Rental screen
+
+**Unlock All Button:**
+- Prominent "Unlock All Topics" button at top or bottom
+- Shows rental period options (e.g., "30 days", "90 days", "1 year")
+
+### 7. **Subscription/Rental Screen** 🆕
+**Header:**
+- "Unlock All Topics"
+- Subtitle: "Get access to all 1500+ questions"
+
+**Current Status:**
+- If Free: "You have 1 free topic (Traffic Signs)"
+- If Rented: "Active until [Date]" with countdown
+
+**Benefits Section:**
+- ✅ Access all 15 topics
+- ✅ 1500+ practice questions
+- ✅ Full exam simulation
+- ✅ Track progress across all topics
+- ✅ Pin questions from any topic
+- ✅ Review mistakes in all areas
+
+**Rental Plans (Google Play In-App Purchase):**
+- **30 Days Plan**
+  - Price: $9.99 (example)
+  - "Most Popular" badge
+  - "Rent for 30 Days" button
+
+- **90 Days Plan**
+  - Price: $24.99 (example)
+  - "Best Value" badge
+  - "Rent for 90 Days" button
+
+- **1 Year Plan**
+  - Price: $49.99 (example)
+  - "Save 50%" badge
+  - "Rent for 1 Year" button
+
+**Payment Method:**
+- "Secure payment via Google Play"
+- Payment method icon (Google Play badge)
+
+**Features Illustration:**
+- Visual showing all 15 topics unlocked
+- Before/After comparison (1 topic vs 15 topics)
+
+**Legal:**
+- Terms of service link
+- Refund policy link
+- "Rental renews automatically" disclaimer
+
+**Alternative CTA:**
+- "Continue with Free Topic" button (secondary style)
+
+### 8. **Progress/Statistics Screen**
 - Overall statistics:
   - Total exams: X
   - Exams passed: X
@@ -500,6 +578,29 @@ The app should integrate with these backend endpoints:
 - Track retry attempts
 - Calculate topic-level accuracy
 
+### Subscription/Rental (Google Play In-App Purchase)
+**Implementation:** Google Play Billing Library v5+
+- Use Google Play Console to configure rental products
+- Product IDs: `rental_30days`, `rental_90days`, `rental_1year`
+- Product Type: Subscription (with rental period)
+
+**Client-Side Management:**
+- Check subscription status on app launch
+- Store rental expiry date locally and on server
+- Verify purchase with Google Play receipt validation
+- Lock/unlock topics based on subscription status
+
+**Backend Endpoints (to be implemented):**
+- `POST /api/subscription/verify` - Verify Google Play purchase token
+- `GET /api/subscription/status/{userId}` - Get rental status
+- `POST /api/subscription/activate` - Activate rental after purchase
+- `GET /api/subscription/expiry/{userId}` - Get expiry date
+
+**Free Topic Logic:**
+- Topic "Traffic Signs" is always unlocked
+- Other 14 topics require active rental
+- Random practice mode limited to free topic if not rented
+
 **Note:** All endpoints except registration/login require JWT token in header:
 ```
 Authorization: Bearer {token}
@@ -510,10 +611,11 @@ Authorization: Bearer {token}
 ## 🎨 Deliverables Expected
 
 1. **High-Fidelity Mockups:**
-   - All 12+ key screens (including Pinned Questions, Wrong Answers, Question Review Detail)
-   - Light and dark mode variants
+   - All 13+ key screens (including Pinned Questions, Wrong Answers, Subscription/Rental)
+   - Lock states (free vs rented) for Topics and Practice screens
    - English and Arabic versions (showing RTL)
    - Empty states for all screens
+   - Rental status banners and badges
 
 2. **Prototype:**
    - Interactive prototype (Figma, Adobe XD, Sketch)
