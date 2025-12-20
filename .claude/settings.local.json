@@ -4,7 +4,12 @@
       "Bash(mvn clean install:*)",
       "Bash(chmod:*)",
       "Bash(java -version:*)",
-      "Bash(./test-api.sh:*)"
+      "Bash(./test-api.sh:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(nslookup:*)",
+      "Bash(curl:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []
