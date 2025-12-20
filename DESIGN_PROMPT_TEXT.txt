@@ -1,0 +1,384 @@
+DUBAI DRIVER LICENSE THEORY APP - UI/UX DESIGN BRIEF
+
+==================================================
+PROJECT OVERVIEW
+==================================================
+
+Create a mobile app for Dubai driving license theory exam preparation. Modern, clean design with multi-language support (English, Arabic RTL, Hindi/Urdu). Target audience: aspiring drivers in Dubai, ages 18-50, multicultural background.
+
+==================================================
+KEY FEATURES & MONETIZATION
+==================================================
+
+FREE VERSION:
+- 1 free topic (Traffic Signs) with full access
+- All app features available (practice, pin, review mistakes)
+- 14 other topics locked with clear lock icons
+
+RENTAL MODEL (Google Play In-App Purchase):
+- 30 Days: $9.99 (Most Popular badge)
+- 90 Days: $24.99 (Best Value badge)  
+- 1 Year: $49.99 (Save 50% badge)
+- Unlocks all 15 topics (1500+ questions)
+- Rental renews automatically
+
+==================================================
+CORE SCREENS (13 screens)
+==================================================
+
+1. ONBOARDING/WELCOME
+   - Language selection (EN, AR, HI/UR)
+   - Dubai skyline or driving imagery
+   - Sign Up and Login buttons
+
+2. LOGIN SCREEN
+   - Username/email field
+   - Password field
+   - Forgot password link
+   - Login button
+   - Create new account link
+
+3. REGISTRATION SCREEN
+   - Full name
+   - Username
+   - Email
+   - Password
+   - Confirm password
+   - Terms & conditions checkbox
+   - Create Account button
+   - "Already have an account? Login" link
+
+4. HOME DASHBOARD
+   - Welcome message with user name
+   - RENTAL STATUS BANNER:
+     * If free: "🔒 1 Free Topic Available" + "Unlock all 15 topics" button
+     * If rented: "✅ Premium Active - X days remaining" with expiry date
+   - Quick stats cards (exams taken, average score, pass rate, questions practiced)
+   - Quick access badges: Pinned Questions (count), Wrong Answers (count)
+   - Main buttons: Practice Questions, Take Mock Exam, Review Topics, My Progress
+   - Review section: Pinned Questions, Review Mistakes
+   - Language switcher (top right)
+   - Profile icon
+
+5. PRACTICE SETUP SCREEN
+   - Mode selection: Random / By Topic / By Difficulty
+   - Topic dropdown showing:
+     * Traffic Signs (unlocked - FREE badge)
+     * 14 other topics with lock icon 🔒 and "Unlock" label
+   - Number of questions slider (5-50)
+   - Start Practice button
+   - If locked topic tapped → Navigate to Subscription screen
+   - Illustration: Friendly character studying/practicing driving
+   - Rental status badge if active
+
+6. QUESTION DISPLAY SCREEN
+   - Question counter (Question 5/20)
+   - Progress bar
+   - Topic tag (e.g., "Traffic Signs")
+   - Difficulty indicator
+   - Pin icon (top-right corner) to save question
+   - Question text (large, clear, readable)
+   - Four option buttons (A, B, C, D)
+   - Skip button
+   - Submit Answer button
+   - Illustration: Question-related visuals (road signs, traffic scenarios)
+
+7. ANSWER FEEDBACK SCREEN
+   - Correct/incorrect feedback (green for correct, red for wrong)
+   - Correct answer highlighted in green
+   - Wrong selection shown in red
+   - Detailed explanation box
+   - Pin icon (remains accessible)
+   - Next Question button
+
+8. SUBSCRIPTION/RENTAL SCREEN (NEW)
+   - Header: "Unlock All Topics" 
+   - Subtitle: "Get access to all 1500+ questions"
+   - Current status: "You have 1 free topic" OR "Active until [Date]"
+   - Benefits checklist:
+     ✅ Access all 15 topics
+     ✅ 1500+ practice questions
+     ✅ Full exam simulation
+     ✅ Track progress across all topics
+     ✅ Pin questions from any topic
+     ✅ Review mistakes in all areas
+   - RENTAL PLANS (3 cards):
+     * 30 Days - $9.99 - "Most Popular" badge - "Rent for 30 Days" button
+     * 90 Days - $24.99 - "Best Value" badge - "Rent for 90 Days" button
+     * 1 Year - $49.99 - "Save 50%" badge - "Rent for 1 Year" button
+   - Payment method: "Secure payment via Google Play" with badge
+   - Features illustration: Before/After (1 topic vs 15 topics unlocked)
+   - Legal: Terms, Refund policy, "Rental renews automatically" disclaimer
+   - Secondary CTA: "Continue with Free Topic" button
+
+9. TOPICS SCREEN
+   - Grid/list of all 15 topics:
+     * Traffic Signs - FREE badge (green), unlocked, accessible
+     * 14 other topics - Lock icon 🔒, dimmed/grayed out, "Unlock All Topics" label
+   - Free topic card shows: icon, name, question count, accuracy %
+   - Locked topic cards: dimmed icon, lock icon, topic name
+   - Tap free topic → practice
+   - Tap locked topic → Navigate to Subscription screen
+   - Prominent "Unlock All Topics" button at top/bottom
+
+10. MOCK EXAM SETUP SCREEN
+    - Exam type: Official Simulation (35 questions, 30 minutes)
+    - Rules display:
+      * Passing score: 80% (28/35 correct)
+      * Time limit: 30 minutes
+      * No going back to previous questions
+    - Start Exam button
+    - Illustration: Serious/focused character with exam paper or clock
+
+11. MOCK EXAM SCREEN
+    - Timer (countdown, prominent) - can be toggled on/off
+    - Question counter
+    - Current question display
+    - Four option buttons
+    - Next button (no back button)
+    - Submit Exam button (last question)
+    - Warning if time running out
+    - Illustration: Exam-related visuals
+
+12. EXAM RESULTS SCREEN
+    - Pass/Fail status (big, clear visual)
+    - Score percentage (large number)
+    - Correct answers count (e.g., 28/35)
+    - Time taken
+    - Review Answers button
+    - Retake Exam button
+    - Back to Home button
+
+13. PINNED QUESTIONS SCREEN
+    - Header: "Pinned Questions" with count badge
+    - Empty state: "No pinned questions yet" with illustration
+    - List of pinned questions:
+      * Question preview (first 2 lines)
+      * Topic tag
+      * Difficulty indicator
+      * Pin icon (tap to unpin)
+    - Group by: All / By Topic / By Difficulty
+    - Tap question to view full question
+    - "Practice All Pinned" button at bottom
+    - "Clear All Pins" option
+    - Swipe left to unpin with undo option
+
+14. WRONG ANSWERS SCREEN
+    - Header: "Review Mistakes" with total count
+    - Categorized by topics (collapsible sections)
+    - Topic header shows:
+      * Topic name
+      * Number of wrong answers
+      * Accuracy rate (e.g., "45% correct")
+      * Visual indicator: 🔴 Red (<50%), 🟡 Yellow (50-79%), 🟢 Green (80%+)
+    - Questions within topic show:
+      * Question preview
+      * Your wrong answer (red)
+      * Correct answer (green)
+      * Times answered incorrectly
+    - Statistics card at top:
+      * Total wrong
+      * Most difficult topic
+      * Improvement rate
+    - Action buttons: "Practice Weak Topics", "Retry These Questions"
+    - Empty state: "No mistakes yet! Keep practicing!" with illustration
+
+15. QUESTION REVIEW DETAIL SCREEN
+    - Full question text
+    - All four options (A, B, C, D)
+    - Your wrong answer highlighted in red outline
+    - Correct answer highlighted in green
+    - Detailed explanation
+    - Topic and difficulty tags
+    - History: "Answered incorrectly X times" with dates
+    - Actions: Pin/Unpin toggle, Try Again, Mark as Learned
+    - Navigation arrows (previous/next)
+
+16. PROGRESS/STATISTICS SCREEN
+    - Overall stats: Total exams, Passed, Average score, Questions answered
+    - Charts: Score trend (line), Performance by topic (bar), Accuracy by difficulty (pie)
+    - Recent exam history list with date, score, pass/fail badge, time
+
+17. PROFILE/SETTINGS SCREEN
+    - User info: Full name, Email
+    - Settings: Preferred language, Auto-advance questions toggle
+    - Actions: Edit profile, Change password, Logout
+    - About: App version, Privacy policy, Terms, Contact support
+
+==================================================
+DESIGN REQUIREMENTS
+==================================================
+
+COLORS:
+- Primary: Dubai government blue (#004B87) or modern alternative
+- Secondary: Gold/amber accents (#D4AF37)
+- Success: Green (#10B981) for correct answers, unlocked states
+- Error: Red (#DC2626) for incorrect answers
+- Warning: Yellow (#F59E0B) for improving topics
+- Locked: Gray (#6B7280) for locked topics
+- Background: Clean whites and light grays
+
+LOCK STATES:
+- Locked topics: Dimmed/grayed icon + lock icon 🔒
+- Unlocked/Free: Bright colors + "FREE" badge (green)
+- Premium active: Success color with checkmark ✅
+
+TYPOGRAPHY:
+- Large, readable fonts (minimum 16px body, 18px+ questions)
+- Multi-language support:
+  * Arabic: Noto Sans Arabic (RTL - entire UI mirrors)
+  * English: San Francisco, Roboto
+  * Hindi/Urdu: Noto Sans Devanagari
+- Accessibility: WCAG AA compliance
+
+ILLUSTRATIONS REQUIRED:
+- Practice Setup: Friendly character studying/practicing driving
+- Question Display: Road signs, traffic scenarios
+- Mock Exam Setup: Serious/focused character with exam/clock
+- Exam Screens: Professional exam atmosphere
+- Subscription Screen: Before/After comparison (1 vs 15 topics)
+- Empty states for: Pinned questions, Wrong answers
+
+SPACING:
+- Base unit: 8px
+- Margins: 16px, 24px, 32px
+- Padding: 12px, 16px, 20px
+- Card spacing: 16px between cards
+- Tap targets: Minimum 44x44px
+
+==================================================
+MONETIZATION FLOW
+==================================================
+
+USER JOURNEY (Free User):
+1. Sign up → Onboarding
+2. Home dashboard shows "1 Free Topic Available" banner
+3. Practice Traffic Signs (free topic) - full access
+4. Try to access locked topic → See lock icon
+5. Tap locked topic → Navigate to Subscription screen
+6. View rental plans (30d, 90d, 1yr)
+7. Select plan → Google Play payment
+8. Payment success → All topics unlocked
+9. Home shows "Premium Active - X days remaining"
+
+LOCK/UNLOCK BEHAVIOR:
+- FREE: Only Traffic Signs accessible in practice/topics
+- Random practice: Limited to free topic only
+- Pinned questions: Can pin from free topic only
+- Wrong answers: Only from free topic questions
+- RENTED: All 15 topics unlocked everywhere
+- Expiry warning: Show when 3 days remaining
+- Post-expiry: Revert to free (1 topic) with gentle upgrade prompts
+
+==================================================
+TECHNICAL NOTES
+==================================================
+
+GOOGLE PLAY IN-APP PURCHASE:
+- Billing Library v5+
+- Product IDs: rental_30days, rental_90days, rental_1year
+- Product Type: Subscription with rental period
+- Receipt validation required
+- Store expiry date locally and server-side
+
+BACKEND INTEGRATION:
+- Check subscription status on app launch
+- Endpoints: /api/subscription/verify, /status, /activate, /expiry
+- Lock/unlock topics based on active rental
+- Free topic (Traffic Signs) always accessible
+
+DATA STORAGE:
+- Pinned questions: Client-side (AsyncStorage/SharedPreferences)
+- Subscription status: Server-side with local cache
+- Rental expiry: Server-verified, locally displayed
+
+==================================================
+NAVIGATION & UX
+==================================================
+
+DESIGNER'S CREATIVE FREEDOM:
+- Choose navigation pattern (bottom tabs, drawer, hybrid)
+- Design user flow diagrams
+- Determine transition animations
+- Dark mode optional
+
+RECOMMENDED NAVIGATION:
+- Quick access to: Practice, Pinned, Mistakes, Profile
+- Persistent rental status indicator if active
+- Easy access to "Unlock All Topics" for free users
+
+ACCESSIBILITY:
+- High contrast mode support
+- Screen reader compatible
+- Haptic feedback for interactions
+- Text scaling up to 200%
+- Color-blind friendly palette
+
+==================================================
+DELIVERABLES
+==================================================
+
+1. HIGH-FIDELITY MOCKUPS:
+   - All 13+ screens
+   - Lock states (free vs rented) for Topics, Practice
+   - English and Arabic versions (RTL)
+   - Empty states for all list screens
+   - Rental status banners and badges
+   - Before/after unlock comparisons
+
+2. DESIGN SYSTEM:
+   - Color palette (including lock states)
+   - Typography scale for 3 languages
+   - Component library (buttons, cards, badges, lock icons)
+   - Icon set (including lock, unlock, premium badges)
+   - Spacing guidelines
+
+3. PROTOTYPE:
+   - Interactive flows (designer's choice)
+   - Subscription flow: Free user → Locked topic → Purchase → Unlocked
+   - Practice flow: Free topic vs All topics
+   - Key user journeys clickable
+
+4. ASSETS:
+   - Exportable icons (SVG)
+   - Illustrations (practice, exam, subscription)
+   - Splash screen
+   - App icon (iOS & Android)
+   - Lock/unlock state icons
+
+==================================================
+SUCCESS METRICS
+==================================================
+
+CONVERSION GOALS:
+- 30% of free users upgrade within 7 days
+- Clear value proposition on subscription screen
+- Frictionless purchase flow via Google Play
+- Non-intrusive upgrade prompts
+
+USER EXPERIENCE:
+- Free users can fully evaluate app with 1 topic
+- Locked content clearly visible but not frustrating
+- Premium users feel value of unlocked content
+- Rental expiry handled gracefully with reminders
+
+==================================================
+FINAL NOTES
+==================================================
+
+This is a freemium model with rental-based monetization. Design should:
+- Make free tier valuable (1 full topic = ~100 questions)
+- Show locked content attractively without being pushy
+- Emphasize value of premium (14 more topics, 1400+ questions)
+- Use Google Play's trusted payment system
+- Handle rental expiry elegantly
+- Encourage upgrades through clear CTAs, not pop-ups
+
+Focus on clean, trustworthy design that respects user choice while clearly showing the benefits of upgrading.
+
+API: https://drivertheoryuae.com
+Total Questions: 1500+ across 15 topics
+Passing Score: 80% (28/35 questions)
+Languages: English, Arabic (RTL), Hindi/Urdu
+
+==================================================
