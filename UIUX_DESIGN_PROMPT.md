@@ -97,7 +97,6 @@ A comprehensive exam preparation platform that:
 **Login Screen:**
 - Username/email field
 - Password field
-- "Remember me" option
 - "Forgot password?" link
 - "Login" button
 - "Create new account" link
@@ -108,9 +107,9 @@ A comprehensive exam preparation platform that:
 - Email
 - Password
 - Confirm password
-- Preferred language selector
 - Terms & conditions checkbox
 - "Create Account" button
+- "Already have an account? Login" link
 
 ### 3. **Home Dashboard**
 - Welcome message with user's name
@@ -142,8 +141,8 @@ A comprehensive exam preparation platform that:
   - By topic (dropdown/list)
   - By difficulty (Easy, Medium, Hard)
 - Number of questions slider (5-50)
-- Language selector
 - "Start Practice" button
+- **Illustration:** Friendly character studying or practicing driving
 
 **Question Display:**
 - Question counter (e.g., "Question 5 of 20")
@@ -155,7 +154,7 @@ A comprehensive exam preparation platform that:
 - Four option buttons (A, B, C, D)
 - "Skip" button
 - "Submit Answer" button
-- Timer (optional, can be toggled)
+- **Illustration:** Question-related visuals (e.g., road sign illustrations)
 
 **Answer Feedback:**
 - Immediate feedback (correct/incorrect)
@@ -174,22 +173,23 @@ A comprehensive exam preparation platform that:
   - Time limit: 30 minutes
   - No going back to previous questions
 - "Start Exam" button
+- **Illustration:** Serious/focused character with exam paper or clock
 
 **During Exam:**
-- Timer (countdown, prominent)
+- Timer (countdown, prominent) - **can be toggled on/off**
 - Question counter
 - Current question display
 - Four option buttons
 - "Next" button (no back button)
 - "Submit Exam" button (last question)
 - Warning if time is running out
+- **Illustration:** Exam-related visuals for context
 
 **Exam Results:**
 - Pass/Fail status (big, clear visual)
 - Score percentage (large number)
 - Correct answers count (e.g., 28/35)
 - Time taken
-- Breakdown by topic (chart/list)
 - "Review Answers" button
 - "Retake Exam" button
 - "Back to Home" button
@@ -248,7 +248,6 @@ A comprehensive exam preparation platform that:
   - All pinned
   - By topic (collapsible sections)
   - By difficulty
-- Search/filter bar
 - Tap question to:
   - View full question
   - Practice this question
@@ -263,10 +262,6 @@ A comprehensive exam preparation platform that:
 
 ### 9. **Wrong Answers Screen**
 - Header: "Review Mistakes" with total count
-- **Filter Tabs:**
-  - All Wrong Answers
-  - By Recent Exam
-  - By All Time
 - **Categorized by Topics:**
   - Collapsible topic sections
   - Topic header shows:
@@ -316,20 +311,14 @@ A comprehensive exam preparation platform that:
   - Pin/Unpin toggle
   - "Try Again" (retest yourself)
   - "Mark as Learned" (remove from wrong answers)
-  - Share question (optional)
 - Navigation arrows (if viewing from a list)
 
 ### 11. **Profile/Settings Screen**
 - User info:
-  - Profile picture (optional)
   - Full name
-  - Username
   - Email
 - Settings:
   - Preferred language
-  - Theme (light/dark mode)
-  - Notifications toggle
-  - Sound effects toggle
   - Auto-advance questions toggle
 - Actions:
   - Edit profile
@@ -340,104 +329,6 @@ A comprehensive exam preparation platform that:
   - Privacy policy
   - Terms of service
   - Contact support
-
-### 12. **Bottom Navigation / Main Menu**
-- Home (dashboard icon)
-- Practice (book/pencil icon)
-- Pinned (bookmark/star icon) - **with badge showing count**
-- Mistakes (warning/refresh icon) - **with badge showing count**
-- Profile (user icon)
-
-**Alternative Layout:** Drawer/Hamburger Menu with sections:
-- Practice & Study
-  - Practice Questions
-  - Take Mock Exam
-  - Review Topics
-- My Learning
-  - Pinned Questions
-  - Review Mistakes
-  - Exam History
-- Progress
-  - Statistics
-  - Achievements
-- Settings & Profile
-
----
-
-## 🎯 User Flows
-
-### Flow 1: New User Journey
-1. Open app → Onboarding
-2. Select language → Welcome screen
-3. Tap "Sign Up" → Registration form
-4. Fill details → Create account
-5. Auto-login → Home dashboard
-6. Start first practice session
-
-### Flow 2: Practice Session
-1. Home → Tap "Practice Questions"
-2. Select mode (random/topic/difficulty)
-3. Choose number of questions
-4. Start practice
-5. Answer questions with immediate feedback
-6. Pin difficult questions during practice
-7. Complete session → View results
-8. Return to home or review answers
-
-### Flow 3: Mock Exam
-1. Home → Tap "Take Mock Exam"
-2. Read exam rules
-3. Confirm start
-4. Answer 35 questions under timer
-5. Submit exam
-6. View pass/fail result
-7. Review answers or retake
-
-### Flow 4: Review Performance
-1. Home → Tap "My Progress"
-2. View statistics and charts
-3. Tap on specific exam
-4. Review detailed breakdown
-5. Identify weak topics
-6. Practice weak topics
-
-### Flow 5: Pin & Review Questions
-1. During practice → See difficult question
-2. Tap pin icon (in top-right corner)
-3. Question saved to "Pinned Questions"
-4. Continue practice
-5. Later: Home → Tap "Pinned Questions"
-6. View all pinned questions
-7. Filter by topic or difficulty
-8. Tap "Practice All Pinned"
-9. Review and practice pinned questions
-10. Unpin questions as you master them
-
-### Flow 6: Review Wrong Answers by Topic
-1. After completing exam → Notice low score in "Traffic Signs"
-2. Home → Tap "Review Mistakes"
-3. View wrong answers categorized by topic
-4. See "Traffic Signs" section shows 8 wrong answers (45% accuracy - Red indicator)
-5. Expand "Traffic Signs" section
-6. Review each wrong question:
-   - See your wrong answer vs correct answer
-   - Read explanation
-   - Pin important ones
-7. Tap "Practice Weak Topics" button
-8. Practice mode starts with questions from topics with most errors
-9. Improve accuracy
-10. Return to "Review Mistakes" → See improved topic performance (Yellow/Green indicator)
-
-### Flow 7: Master Difficult Questions
-1. Home → "Review Mistakes" → See "Parking" topic with 12 wrong answers
-2. Tap "Parking" topic to expand
-3. Review individual wrong questions
-4. Pin 3 most difficult ones
-5. Tap "Retry These Questions"
-6. Practice just those 12 parking questions
-7. Answer correctly
-8. Mark as learned (removes from wrong answers)
-9. Check progress → "Parking" topic now shows improved accuracy
 
 ---
 
