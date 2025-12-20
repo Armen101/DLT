@@ -7,12 +7,11 @@
 ###############################################
 
 ### Register a new user
-POST http://localhost:8080/api/auth/register
+POST https://drivertheoryuae.com/api/auth/register
 Content-Type: application/json
 
 {
-  "username": "ahmed123",
-  "email": "ahmed@example.com",
+  "email": "ahmed33d@example.com",
   "password": "password123",
   "fullName": "Ahmed Al Maktoum",
   "preferredLanguage": "ar"

@@ -82,36 +82,33 @@ public class UserService {
     }
 
     public LoginResponse login(LoginRequest loginRequest) {
-        Optional<User> userOptional = userRepository.findByUsername(loginRequest.getUsername());
+        Optional<User> userOptional = userRepository.findByEmail(loginRequest.getEmail());
 
         if (userOptional.isEmpty()) {
-            return new LoginResponse(false, "Invalid username or password");
+            return new LoginResponse(false, "Invalid email or password");
         }
 
         User user = userOptional.get();
 
         if (!user.getPassword().equals(loginRequest.getPassword())) {
-            return new LoginResponse(false, "Invalid username or password");
+            return new LoginResponse(false, "Invalid email or password");
         }
 
         user.setLastLogin(LocalDateTime.now());
         userRepository.save(user);
 
-        String token = jwtUtil.generateToken(user.getId(), user.getUsername());
+        String token = jwtUtil.generateToken(user.getId(), user.getEmail());
         UserDTO userDTO = convertToDTO(user);
         return new LoginResponse(true, "Login successful", token, userDTO);
     }
 
     public LoginResponse register(RegisterRequest registerRequest) {
-        if (userRepository.existsByUsername(registerRequest.getUsername())) {
-            return new LoginResponse(false, "Username already exists");
-        }
         if (userRepository.existsByEmail(registerRequest.getEmail())) {
             return new LoginResponse(false, "Email already exists");
         }
 
         User user = new User();
-        user.setUsername(registerRequest.getUsername());
+        user.setUsername(registerRequest.getEmail());
         user.setEmail(registerRequest.getEmail());
         user.setPassword(registerRequest.getPassword());
         user.setFullName(registerRequest.getFullName());
@@ -119,7 +116,7 @@ public class UserService {
 
         User savedUser = userRepository.save(user);
 
-        String token = jwtUtil.generateToken(savedUser.getId(), savedUser.getUsername());
+        String token = jwtUtil.generateToken(savedUser.getId(), savedUser.getEmail());
         UserDTO userDTO = convertToDTO(savedUser);
 
         return new LoginResponse(true, "Registration successful", token, userDTO);
