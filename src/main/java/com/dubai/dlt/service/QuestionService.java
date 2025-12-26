@@ -28,14 +28,16 @@ public class QuestionService {
         return convertToDTO(question, language);
     }
 
-    public List<QuestionDTO> getQuestionsByTopic(String topic, String language) {
+    public List<QuestionDTO> getQuestionsByTopic(String topic, int count, String language) {
         return questionRepository.findByTopicTag(topic).stream()
+                .limit(count)
                 .map(q -> convertToDTO(q, language))
                 .collect(Collectors.toList());
     }
 
-    public List<QuestionDTO> getQuestionsByDifficulty(String difficulty, String language) {
+    public List<QuestionDTO> getQuestionsByDifficulty(String difficulty, int count, String language) {
         return questionRepository.findByDifficulty(difficulty).stream()
+                .limit(count)
                 .map(q -> convertToDTO(q, language))
                 .collect(Collectors.toList());
     }

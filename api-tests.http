@@ -56,11 +56,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjgsInVzZXJuYW1lIjoiYWhtZ
 GET http://localhost:8080/api/questions/random?count=5&language=hi_ur
 
 ### Get questions by topic (Signs)
-GET http://localhost:8080/api/questions/topic/Signs?language=en
+GET http://localhost:8080/api/questions/topic/Signs?count=5&language=en
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjgsInVzZXJuYW1lIjoiYWhtZWQzMzNkQGV4YW1wbGUuY29tIiwic3ViIjoiYWhtZWQzMzNkQGV4YW1wbGUuY29tIiwiaWF0IjoxNzY2Nzc3MzIyLCJleHAiOjE3NjY4NjM3MjJ9.gLQAfDR9XgbxtdFbzcERzHO9s6mianL9GsNN_HYiWss
 
 ### Get questions by difficulty (Easy)
-GET http://localhost:8080/api/questions/difficulty/Easy?language=en
+GET http://localhost:8080/api/questions/difficulty/Easy?count=5&language=en
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjgsInVzZXJuYW1lIjoiYWhtZWQzMzNkQGV4YW1wbGUuY29tIiwic3ViIjoiYWhtZWQzMzNkQGV4YW1wbGUuY29tIiwiaWF0IjoxNzY2Nzc3MzIyLCJleHAiOjE3NjY4NjM3MjJ9.gLQAfDR9XgbxtdFbzcERzHO9s6mianL9GsNN_HYiWss
 
 ### Get specific question by ID
 GET http://localhost:8080/api/questions/1?language=en

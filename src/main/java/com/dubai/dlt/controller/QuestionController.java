@@ -31,15 +31,17 @@ public class QuestionController {
     @GetMapping("/topic/{topic}")
     public ResponseEntity<List<QuestionDTO>> getQuestionsByTopic(
             @PathVariable String topic,
+            @RequestParam(defaultValue = "20") int count,
             @RequestParam(defaultValue = "en") String language) {
-        return ResponseEntity.ok(questionService.getQuestionsByTopic(topic, language));
+        return ResponseEntity.ok(questionService.getQuestionsByTopic(topic, count, language));
     }
 
     @GetMapping("/difficulty/{difficulty}")
     public ResponseEntity<List<QuestionDTO>> getQuestionsByDifficulty(
             @PathVariable String difficulty,
+            @RequestParam(defaultValue = "20") int count,
             @RequestParam(defaultValue = "en") String language) {
-        return ResponseEntity.ok(questionService.getQuestionsByDifficulty(difficulty, language));
+        return ResponseEntity.ok(questionService.getQuestionsByDifficulty(difficulty, count, language));
     }
 
     @GetMapping("/random")
