@@ -11,18 +11,18 @@ POST https://drivertheoryuae.com/api/auth/register
 Content-Type: application/json
 
 {
-  "email": "ahmed33d@example.com",
+  "email": "ahmed333d@example.com",
   "password": "password123",
   "fullName": "Ahmed Al Maktoum",
   "preferredLanguage": "ar"
 }
 
 ### Login with username and password
-POST http://localhost:8080/api/auth/login
+POST https://drivertheoryuae.com/api/auth/login
 Content-Type: application/json
 
 {
-  "username": "ahmed123",
+  "email": "ahmed333d@example.com",
   "password": "password123"
 }
 
@@ -50,13 +50,14 @@ GET http://localhost:8080/api/questions/random?count=5&language=ar
 
 ### Get 5 random questions in Hindi/Urdu (requires token)
 GET http://localhost:8080/api/questions/random?count=5&language=hi_ur
-Authorization: Bearer YOUR_TOKEN_HERE
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjgsInVzZXJuYW1lIjoiYWhtZWQzMzNkQGV4YW1wbGUuY29tIiwic3ViIjoiYWhtZWQzMzNkQGV4YW1wbGUuY29tIiwiaWF0IjoxNzY2Nzc3MzIyLCJleHAiOjE3NjY4NjM3MjJ9.gLQAfDR9XgbxtdFbzcERzHO9s6mianL9GsNN_HYiWss
 
 ### Get 5 random questions in Hindi/Urdu
 GET http://localhost:8080/api/questions/random?count=5&language=hi_ur
 
 ### Get questions by topic (Signs)
 GET http://localhost:8080/api/questions/topic/Signs?language=en
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjgsInVzZXJuYW1lIjoiYWhtZWQzMzNkQGV4YW1wbGUuY29tIiwic3ViIjoiYWhtZWQzMzNkQGV4YW1wbGUuY29tIiwiaWF0IjoxNzY2Nzc3MzIyLCJleHAiOjE3NjY4NjM3MjJ9.gLQAfDR9XgbxtdFbzcERzHO9s6mianL9GsNN_HYiWss
 
 ### Get questions by difficulty (Easy)
 GET http://localhost:8080/api/questions/difficulty/Easy?language=en

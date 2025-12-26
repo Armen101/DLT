@@ -5,6 +5,8 @@ import com.dubai.dlt.entity.Question;
 import com.dubai.dlt.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -60,34 +62,61 @@ public class QuestionService {
         dto.setTopicTag(question.getTopicTag());
         dto.setDifficulty(question.getDifficulty());
 
+        // Create list of answer texts to shuffle
+        List<String> answerTexts = new ArrayList<>();
+
         switch (language.toLowerCase()) {
             case "ar":
                 dto.setQuestion(question.getQuestionAr());
-                dto.setOptionA(question.getAAr());
-                dto.setOptionB(question.getBAr());
-                dto.setOptionC(question.getCAr());
-                dto.setOptionD(question.getDAr());
+                answerTexts.add(question.getAAr());
+                answerTexts.add(question.getBAr());
+                answerTexts.add(question.getCAr());
+                answerTexts.add(question.getDAr());
                 dto.setExplanation(question.getExplanationAr());
                 break;
             case "hi":
             case "ur":
             case "hi_ur":
                 dto.setQuestion(question.getQuestionHiUr());
-                dto.setOptionA(question.getAHiUr());
-                dto.setOptionB(question.getBHiUr());
-                dto.setOptionC(question.getCHiUr());
-                dto.setOptionD(question.getDHiUr());
+                answerTexts.add(question.getAHiUr());
+                answerTexts.add(question.getBHiUr());
+                answerTexts.add(question.getCHiUr());
+                answerTexts.add(question.getDHiUr());
                 dto.setExplanation(question.getExplanationHiUr());
                 break;
             default:
                 dto.setQuestion(question.getQuestionEn());
-                dto.setOptionA(question.getAEn());
-                dto.setOptionB(question.getBEn());
-                dto.setOptionC(question.getCEn());
-                dto.setOptionD(question.getDEn());
+                answerTexts.add(question.getAEn());
+                answerTexts.add(question.getBEn());
+                answerTexts.add(question.getCEn());
+                answerTexts.add(question.getDEn());
                 dto.setExplanation(question.getExplanationEn());
                 break;
         }
+
+        // Find the correct answer text based on the original correct field
+        int originalCorrectIndex = question.getCorrect().toUpperCase().charAt(0) - 'A'; // A=0, B=1, C=2, D=3
+        String correctAnswerText = answerTexts.get(originalCorrectIndex);
+
+        // Shuffle the answer texts
+        Collections.shuffle(answerTexts);
+
+        // Build options with A, B, C, D keys in sequential order
+        List<QuestionDTO.OptionDTO> options = new ArrayList<>();
+        String newCorrect = "";
+
+        for (int i = 0; i < answerTexts.size(); i++) {
+            String key = String.valueOf((char)('A' + i)); // A, B, C, D
+            options.add(new QuestionDTO.OptionDTO(key, answerTexts.get(i)));
+            // Find where the correct answer ended up
+            if (answerTexts.get(i).equals(correctAnswerText)) {
+                newCorrect = key;
+            }
+        }
+
+        dto.setOptions(options);
+        dto.setImage(question.getImage());
+        dto.setCorrect(newCorrect);
 
         return dto;
     }

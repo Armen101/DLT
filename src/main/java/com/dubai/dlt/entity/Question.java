@@ -67,6 +67,9 @@ public class Question {
     @Column(name = "d_hi_ur", columnDefinition = "TEXT", nullable = false)
     private String dHiUr;
 
+    @Column(name = "image", columnDefinition = "TEXT")
+    private String image;
+
     @Column(nullable = false, length = 1)
     private String correct;
 
