@@ -66,6 +66,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         // Public endpoints that don't require authentication
         return path.startsWith("/api/auth/") ||
                path.startsWith("/h2-console") ||
+               path.startsWith("/actuator/") ||
                path.equals("/api/questions/topics");
     }
 }
