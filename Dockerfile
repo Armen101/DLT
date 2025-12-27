@@ -15,5 +15,6 @@ RUN mkdir -p /app/data
 
 EXPOSE 8080
 
-# Use railway profile if DATABASE_URL is set, otherwise use prod profile with H2
-ENTRYPOINT ["sh", "-c", "if [ -n \"$DATABASE_URL\" ]; then java -jar app.jar --spring.profiles.active=railway; else java -jar app.jar --spring.profiles.active=prod; fi"]
+# Use railway profile by default for Railway deployments
+# Railway will inject DATABASE_URL and other variables at runtime
+ENTRYPOINT ["java", "-jar", "app.jar", "--spring.profiles.active=railway"]
