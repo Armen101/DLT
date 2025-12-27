@@ -64,7 +64,7 @@ public class QuestionService {
         dto.setTopicTag(question.getTopicTag());
         dto.setDifficulty(question.getDifficulty());
 
-        // Create list of answer texts to shuffle
+        // Create list of answer texts in original order (no shuffling for MVP)
         List<String> answerTexts = new ArrayList<>();
 
         switch (language.toLowerCase()) {
@@ -96,29 +96,17 @@ public class QuestionService {
                 break;
         }
 
-        // Find the correct answer text based on the original correct field
-        int originalCorrectIndex = question.getCorrect().toUpperCase().charAt(0) - 'A'; // A=0, B=1, C=2, D=3
-        String correctAnswerText = answerTexts.get(originalCorrectIndex);
-
-        // Shuffle the answer texts
-        Collections.shuffle(answerTexts);
-
-        // Build options with A, B, C, D keys in sequential order
+        // Build options with A, B, C, D keys in original order
         List<QuestionDTO.OptionDTO> options = new ArrayList<>();
-        String newCorrect = "";
 
         for (int i = 0; i < answerTexts.size(); i++) {
             String key = String.valueOf((char)('A' + i)); // A, B, C, D
             options.add(new QuestionDTO.OptionDTO(key, answerTexts.get(i)));
-            // Find where the correct answer ended up
-            if (answerTexts.get(i).equals(correctAnswerText)) {
-                newCorrect = key;
-            }
         }
 
         dto.setOptions(options);
         dto.setImage(question.getImage());
-        dto.setCorrect(newCorrect);
+        dto.setCorrect(question.getCorrect());
 
         return dto;
     }
