@@ -42,7 +42,14 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- MySQL Connector (for production) -->
+        <!-- PostgreSQL Connector (for Railway production) -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- MySQL Connector (alternative for production) -->
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
