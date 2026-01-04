@@ -1,9 +1,11 @@
 package com.dubai.dlt.config;
 
+import com.dubai.dlt.repository.TokenBlacklistRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
@@ -13,6 +15,9 @@ import java.util.Map;
 
 @Component
 public class JwtUtil {
+
+    @Autowired
+    private TokenBlacklistRepository tokenBlacklistRepository;
 
     private static final String SECRET_KEY = "DubaiLicenseTheorySecretKeyForJWTTokenGeneration2024";
     private static final long EXPIRATION_TIME = 86400000; // 24 hours in milliseconds
@@ -56,8 +61,15 @@ public class JwtUtil {
         return extractClaims(token).getExpiration().before(new Date());
     }
 
+    public boolean isTokenBlacklisted(String token) {
+        return tokenBlacklistRepository.existsByToken(token);
+    }
+
     public boolean validateToken(String token, Long userId) {
         try {
+            if (isTokenBlacklisted(token)) {
+                return false;
+            }
             Long tokenUserId = extractUserId(token);
             return (tokenUserId.equals(userId) && !isTokenExpired(token));
         } catch (Exception e) {
@@ -67,6 +79,9 @@ public class JwtUtil {
 
     public boolean validateToken(String token) {
         try {
+            if (isTokenBlacklisted(token)) {
+                return false;
+            }
             extractClaims(token);
             return !isTokenExpired(token);
         } catch (Exception e) {

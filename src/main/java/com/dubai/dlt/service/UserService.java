@@ -5,11 +5,15 @@ import com.dubai.dlt.dto.LoginRequest;
 import com.dubai.dlt.dto.LoginResponse;
 import com.dubai.dlt.dto.RegisterRequest;
 import com.dubai.dlt.dto.UserDTO;
+import com.dubai.dlt.entity.TokenBlacklist;
 import com.dubai.dlt.entity.User;
+import com.dubai.dlt.repository.TokenBlacklistRepository;
 import com.dubai.dlt.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -22,6 +26,9 @@ public class UserService {
 
     @Autowired
     private JwtUtil jwtUtil;
+
+    @Autowired
+    private TokenBlacklistRepository tokenBlacklistRepository;
 
     public UserDTO createUser(UserDTO userDTO) {
         if (userRepository.existsByUsername(userDTO.getUsername())) {
@@ -120,6 +127,27 @@ public class UserService {
         UserDTO userDTO = convertToDTO(savedUser);
 
         return new LoginResponse(true, "Registration successful", token, userDTO);
+    }
+
+    public void logout(String token) {
+        if (token == null || token.isEmpty()) {
+            throw new RuntimeException("Token is required for logout");
+        }
+
+        if (tokenBlacklistRepository.existsByToken(token)) {
+            throw new RuntimeException("Token already invalidated");
+        }
+
+        Date expirationDate = jwtUtil.extractClaims(token).getExpiration();
+        LocalDateTime expiresAt = expirationDate.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDateTime();
+
+        TokenBlacklist blacklistedToken = new TokenBlacklist();
+        blacklistedToken.setToken(token);
+        blacklistedToken.setExpiresAt(expiresAt);
+
+        tokenBlacklistRepository.save(blacklistedToken);
     }
 
     private UserDTO convertToDTO(User user) {

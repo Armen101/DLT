@@ -39,4 +39,34 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
         }
     }
+
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout(@RequestHeader("Authorization") String authorizationHeader) {
+        try {
+            String token = authorizationHeader.replace("Bearer ", "");
+            userService.logout(token);
+            return ResponseEntity.ok(new LogoutResponse(true, "Logout successful"));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(new LogoutResponse(false, e.getMessage()));
+        }
+    }
+
+    private static class LogoutResponse {
+        private boolean success;
+        private String message;
+
+        public LogoutResponse(boolean success, String message) {
+            this.success = success;
+            this.message = message;
+        }
+
+        public boolean isSuccess() {
+            return success;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+    }
 }
