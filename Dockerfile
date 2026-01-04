@@ -13,7 +13,7 @@ COPY --from=build /app/target/*.jar app.jar
 # Create data directory for H2 database (if using H2 in production)
 RUN mkdir -p /app/data
 
-EXPOSE 5050
+EXPOSE 8080
 
 # Use railway profile if DATABASE_URL is set, otherwise use prod profile with H2
 ENTRYPOINT ["sh", "-c", "if [ -n \"$DATABASE_URL\" ]; then java -jar app.jar --spring.profiles.active=railway; else java -jar app.jar --spring.profiles.active=prod; fi"]
