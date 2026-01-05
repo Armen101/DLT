@@ -42,15 +42,12 @@ public class DataLoader implements CommandLineRunner {
                     question.setAEn(data.getA_en());
                     question.setBEn(data.getB_en());
                     question.setCEn(data.getC_en());
-                    question.setDEn(data.getD_en());
                     question.setAAr(data.getA_ar());
                     question.setBAr(data.getB_ar());
                     question.setCAr(data.getC_ar());
-                    question.setDAr(data.getD_ar());
                     question.setAHiUr(data.getA_hi_ur());
                     question.setBHiUr(data.getB_hi_ur());
                     question.setCHiUr(data.getC_hi_ur());
-                    question.setDHiUr(data.getD_hi_ur());
                     question.setCorrect(data.getCorrect());
                     question.setExplanationEn(data.getExplanation_en());
                     question.setExplanationAr(data.getExplanation_ar());
@@ -98,9 +95,6 @@ public class DataLoader implements CommandLineRunner {
         @JsonProperty("C_en")
         private String C_en;
 
-        @JsonProperty("D_en")
-        private String D_en;
-
         @JsonProperty("A_ar")
         private String A_ar;
 
@@ -110,9 +104,6 @@ public class DataLoader implements CommandLineRunner {
         @JsonProperty("C_ar")
         private String C_ar;
 
-        @JsonProperty("D_ar")
-        private String D_ar;
-
         @JsonProperty("A_hi_ur")
         private String A_hi_ur;
 
@@ -121,9 +112,6 @@ public class DataLoader implements CommandLineRunner {
 
         @JsonProperty("C_hi_ur")
         private String C_hi_ur;
-
-        @JsonProperty("D_hi_ur")
-        private String D_hi_ur;
 
         @JsonProperty("correct")
         private String correct;
@@ -155,24 +143,18 @@ public class DataLoader implements CommandLineRunner {
         public void setB_en(String b_en) { B_en = b_en; }
         public String getC_en() { return C_en; }
         public void setC_en(String c_en) { C_en = c_en; }
-        public String getD_en() { return D_en; }
-        public void setD_en(String d_en) { D_en = d_en; }
         public String getA_ar() { return A_ar; }
         public void setA_ar(String a_ar) { A_ar = a_ar; }
         public String getB_ar() { return B_ar; }
         public void setB_ar(String b_ar) { B_ar = b_ar; }
         public String getC_ar() { return C_ar; }
         public void setC_ar(String c_ar) { C_ar = c_ar; }
-        public String getD_ar() { return D_ar; }
-        public void setD_ar(String d_ar) { D_ar = d_ar; }
         public String getA_hi_ur() { return A_hi_ur; }
         public void setA_hi_ur(String a_hi_ur) { A_hi_ur = a_hi_ur; }
         public String getB_hi_ur() { return B_hi_ur; }
         public void setB_hi_ur(String b_hi_ur) { B_hi_ur = b_hi_ur; }
         public String getC_hi_ur() { return C_hi_ur; }
         public void setC_hi_ur(String c_hi_ur) { C_hi_ur = c_hi_ur; }
-        public String getD_hi_ur() { return D_hi_ur; }
-        public void setD_hi_ur(String d_hi_ur) { D_hi_ur = d_hi_ur; }
         public String getCorrect() { return correct; }
         public void setCorrect(String correct) { this.correct = correct; }
         public String getExplanation_en() { return explanation_en; }
