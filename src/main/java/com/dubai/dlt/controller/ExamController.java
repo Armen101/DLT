@@ -2,6 +2,7 @@ package com.dubai.dlt.controller;
 
 import com.dubai.dlt.dto.ExamResultDTO;
 import com.dubai.dlt.dto.ExamSubmissionDTO;
+import com.dubai.dlt.dto.TopicPerformanceDTO;
 import com.dubai.dlt.dto.UserStatsDTO;
 import com.dubai.dlt.service.ExamService;
 import jakarta.validation.Valid;
@@ -37,5 +38,10 @@ public class ExamController {
     @GetMapping("/user/{userId}/stats")
     public ResponseEntity<UserStatsDTO> getUserStats(@PathVariable Long userId) {
         return ResponseEntity.ok(examService.getUserStats(userId));
+    }
+
+    @GetMapping("/user/{userId}/performance-by-topic")
+    public ResponseEntity<List<TopicPerformanceDTO>> getTopicPerformance(@PathVariable Long userId) {
+        return ResponseEntity.ok(examService.getTopicPerformance(userId));
     }
 }

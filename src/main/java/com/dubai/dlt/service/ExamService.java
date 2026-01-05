@@ -2,6 +2,7 @@ package com.dubai.dlt.service;
 
 import com.dubai.dlt.dto.ExamResultDTO;
 import com.dubai.dlt.dto.ExamSubmissionDTO;
+import com.dubai.dlt.dto.TopicPerformanceDTO;
 import com.dubai.dlt.dto.UserStatsDTO;
 import com.dubai.dlt.entity.ExamResult;
 import com.dubai.dlt.entity.Question;
@@ -120,6 +121,24 @@ public class ExamService {
         stats.setTotalQuestionsAnswered(totalQuestionsAnswered);
 
         return stats;
+    }
+
+    public List<TopicPerformanceDTO> getTopicPerformance(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found with id: " + userId));
+
+        List<Object[]> results = userAnswerRepository.findTopicPerformanceByUserId(userId);
+
+        return results.stream()
+                .map(row -> {
+                    String topic = (String) row[0];
+                    Long totalQuestions = ((Number) row[1]).longValue();
+                    Long correctAnswers = ((Number) row[2]).longValue();
+                    Double percentage = (correctAnswers.doubleValue() / totalQuestions.doubleValue()) * 100;
+
+                    return new TopicPerformanceDTO(topic, totalQuestions, correctAnswers, percentage);
+                })
+                .collect(Collectors.toList());
     }
 
     private ExamResultDTO convertToDTO(ExamResult result, List<ExamResultDTO.QuestionResultDTO> questionResults) {
