@@ -73,7 +73,6 @@ public class QuestionService {
                 answerTexts.add(question.getAAr());
                 answerTexts.add(question.getBAr());
                 answerTexts.add(question.getCAr());
-                answerTexts.add(question.getDAr());
                 dto.setExplanation(question.getExplanationAr());
                 break;
             case "hi":
@@ -83,7 +82,6 @@ public class QuestionService {
                 answerTexts.add(question.getAHiUr());
                 answerTexts.add(question.getBHiUr());
                 answerTexts.add(question.getCHiUr());
-                answerTexts.add(question.getDHiUr());
                 dto.setExplanation(question.getExplanationHiUr());
                 break;
             default:
@@ -91,16 +89,15 @@ public class QuestionService {
                 answerTexts.add(question.getAEn());
                 answerTexts.add(question.getBEn());
                 answerTexts.add(question.getCEn());
-                answerTexts.add(question.getDEn());
                 dto.setExplanation(question.getExplanationEn());
                 break;
         }
 
-        // Build options with A, B, C, D keys in original order
+        // Build options with A, B, C keys in original order
         List<QuestionDTO.OptionDTO> options = new ArrayList<>();
 
         for (int i = 0; i < answerTexts.size(); i++) {
-            String key = String.valueOf((char)('A' + i)); // A, B, C, D
+            String key = String.valueOf((char)('A' + i)); // A, B, C
             options.add(new QuestionDTO.OptionDTO(key, answerTexts.get(i)));
         }
 
