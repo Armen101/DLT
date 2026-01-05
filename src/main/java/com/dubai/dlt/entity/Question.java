@@ -40,9 +40,6 @@ public class Question {
     @Column(name = "c_en", columnDefinition = "TEXT", nullable = false)
     private String cEn;
 
-    @Column(name = "d_en", columnDefinition = "TEXT", nullable = false)
-    private String dEn;
-
     @Column(name = "a_ar", columnDefinition = "TEXT", nullable = false)
     private String aAr;
 
@@ -52,9 +49,6 @@ public class Question {
     @Column(name = "c_ar", columnDefinition = "TEXT", nullable = false)
     private String cAr;
 
-    @Column(name = "d_ar", columnDefinition = "TEXT", nullable = false)
-    private String dAr;
-
     @Column(name = "a_hi_ur", columnDefinition = "TEXT", nullable = false)
     private String aHiUr;
 
@@ -63,9 +57,6 @@ public class Question {
 
     @Column(name = "c_hi_ur", columnDefinition = "TEXT", nullable = false)
     private String cHiUr;
-
-    @Column(name = "d_hi_ur", columnDefinition = "TEXT", nullable = false)
-    private String dHiUr;
 
     @Column(name = "image", columnDefinition = "TEXT")
     private String image;
